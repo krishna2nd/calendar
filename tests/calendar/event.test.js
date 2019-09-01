@@ -36,7 +36,7 @@ describe('CalendarEvent', () => {
   })
   it('Create ()', () => {
     const event = new CalendarEvent()
-    assert.equal(event.id, '');
+    assert.ok(event.id !== '');
     assert.ok(isNumber(event.start));
     assert.ok(isNumber(event.end));
 
