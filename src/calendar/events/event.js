@@ -1,4 +1,5 @@
 import { CAL_WIDTH } from '../../lib/constant'
+import { timeout } from 'q'
 
 class CalendarEvent {
   constructor(_event) {
@@ -17,7 +18,7 @@ class CalendarEvent {
       end = start + 30
     }
 
-    this.id = (_event && _event.id) || ''
+    this.id = (_event && _event.id) || 'New ' + today.getTime()
     this.start = start
     this.end = end
 

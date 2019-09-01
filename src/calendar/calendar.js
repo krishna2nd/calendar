@@ -1,14 +1,27 @@
+/* eslint no-restricted-globals:0 */
+
 import CalendarEvents from './events/events'
 import { Ruler } from './ruler'
 import './calendar.style.css'
 import calSvg from './calendar.svg'
 import eventSvg from './events/event.svg'
-
+import AddEventModal from './modal/add/add'
+import CalendarEvent from './events/event'
 class Calendar {
   constructor(_events) {
     this.events = new CalendarEvents(_events || [])
+    this.modal = new AddEventModal(this.onSave.bind(this))
+    window.onSave = this.onSave.bind(this)
   }
 
+  onSave(e) {
+    this.add({
+      id: document.getElementById('title').value,
+      start: document.getElementById('start').value,
+      end: document.getElementById('end').value,
+    })
+    window.hide && window.hide()
+  }
   add(_event) {
     this.events.add(_event)
     this.render()
@@ -58,11 +71,12 @@ class Calendar {
       <div class="header"><img src="${calSvg}" /> ${Header}</div>
       <div class="calendar">
         ${this.renderRuler()}
-        <div class="events">
+        <div class="events" onclick="show()">
          ${this.renderEvents()}
         </div>
       </div>
       <div class="footer">${Header}</div>
+      ${this.modal.render()}
     `
   }
 }
