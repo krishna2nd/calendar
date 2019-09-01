@@ -6,7 +6,7 @@ import CalendarEvent from '../../events/event'
 window.show = function() {
   var ele = document.getElementById('add-event')
   ele.style.display = 'block'
-  var _event = new CalendarEvent({ start: event.offsetY, end: 30 })
+  var _event = new CalendarEvent({ start: Math.floor(event.offsetY/2)})
   document.getElementById('title').value = _event.id
   document.getElementById('start').value = _event.start
   document.getElementById('end').value = _event.end
@@ -14,7 +14,6 @@ window.show = function() {
 }
 window.hide = function() {
   var ele = document.getElementById('add-event')
-  console.log(ele)
   ele.style.display = 'none'
 }
 
