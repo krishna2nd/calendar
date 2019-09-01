@@ -1,3 +1,3 @@
-import Ruler from './ruler'
+import Ruler from './ruler';
 
-export { Ruler }
+export { Ruler };

@@ -1,17 +1,17 @@
 /* eslint no-restricted-globals:0 */
 
-import CalendarEvents from './events/events'
-import { Ruler } from './ruler'
-import './calendar.style.css'
-import calSvg from './calendar.svg'
-import eventSvg from './events/event.svg'
-import AddEventModal from './modal/add/add'
-import CalendarEvent from './events/event'
+import CalendarEvents from './events/events';
+import { Ruler } from './ruler';
+import './calendar.style.css';
+import calSvg from './calendar.svg';
+import eventSvg from './events/event.svg';
+import AddEventModal from './modal/add/add';
+import CalendarEvent from './events/event';
 class Calendar {
   constructor(_events) {
-    this.events = new CalendarEvents(_events || [])
-    this.modal = new AddEventModal(this.onSave.bind(this))
-    window.onSave = this.onSave.bind(this)
+    this.events = new CalendarEvents(_events || []);
+    this.modal = new AddEventModal(this.onSave.bind(this));
+    window.onSave = this.onSave.bind(this);
   }
 
   onSave(e) {
@@ -19,12 +19,12 @@ class Calendar {
       id: document.getElementById('title').value,
       start: document.getElementById('start').value,
       end: document.getElementById('end').value,
-    })
-    window.hide && window.hide()
+    });
+    window.hide && window.hide();
   }
   add(_event) {
-    this.events.add(_event)
-    this.render()
+    this.events.add(_event);
+    this.render();
   }
 
   renderRuler() {
@@ -41,13 +41,13 @@ class Calendar {
       '07:00 pm',
       '08:00 pm',
       '09:00 pm',
-    ])
-    return ruler.render()
+    ]);
+    return ruler.render();
   }
   renderEvents() {
-    let eventHtml = []
+    let eventHtml = [];
     this.events.iterate(_event => {
-      const { width, duration: height, top, left } = _event
+      const { width, duration: height, top, left } = _event;
       const html = `<div
       class='event'
       style='width:${width}px;
@@ -56,17 +56,17 @@ class Calendar {
       margin-left: ${left}px;'>
       <img src="${eventSvg}" />
       Meeting - ${_event.id}
-      </div>`
-      eventHtml.push(html)
-    })
-    return eventHtml.join('')
+      </div>`;
+      eventHtml.push(html);
+    });
+    return eventHtml.join('');
   }
 
   render(element) {
     if (element) {
-      this.element = element
+      this.element = element;
     }
-    const Header = new Date().toDateString()
+    const Header = new Date().toDateString();
     this.element.innerHTML = `
       <div class="header"><img src="${calSvg}" /> ${Header}</div>
       <div class="calendar">
@@ -77,8 +77,8 @@ class Calendar {
       </div>
       <div class="footer">${Header}</div>
       ${this.modal.render()}
-    `
+    `;
   }
 }
 
-export default Calendar
+export default Calendar;

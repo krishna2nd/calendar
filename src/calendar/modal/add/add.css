@@ -7,7 +7,8 @@
     box-shadow: 0 40px 77px 0 rgba(0, 0, 0, 0.22);
     box-sizing: border-box;
     background-color: #FFF;
-    display: none
+    display: none;
+    transition: top 1s ease-in-out;
 }
 
 .modal .modal-header {

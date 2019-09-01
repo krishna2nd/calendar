@@ -1,1 +1,1 @@
-export const CAL_WIDTH = 600
+export const CAL_WIDTH = 600;

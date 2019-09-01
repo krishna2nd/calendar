@@ -1,4 +1,4 @@
-import './ruler.style.css'
+import './ruler.style.css';
 
 const htmlHour = label => {
   return `<div class="hour" data-hour="${label}">
@@ -100,23 +100,23 @@ const htmlHour = label => {
         </div>
       </div>
     </div>
-  </div>`
-}
+  </div>`;
+};
 
 class Ruler {
   constructor(hourLabel) {
-    this.hours = hourLabel
+    this.hours = hourLabel;
   }
   render() {
     return `
     <div class="ruler">
         ${this.hours.map(label => this.renderHour(label)).join('')}
-    </div>`
+    </div>`;
   }
 
   renderHour(label) {
-    return htmlHour(label)
+    return htmlHour(label);
   }
 }
 
-export default Ruler
+export default Ruler;

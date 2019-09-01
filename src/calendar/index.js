@@ -1,4 +1,4 @@
-import { Ruler } from './ruler'
-import Calendar from './calendar'
+import { Ruler } from './ruler';
+import Calendar from './calendar';
 
-export { Ruler, Calendar }
+export { Ruler, Calendar };
