@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "cross-env": "^5.2.1",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
     "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cross-env NODE_ENV=test nyc  mocha --recursive  './tests/**/*.test.js' --require @babel/register --exit --timeout 20000 ",
     "eject": "react-scripts eject",
-    "format": "prettier --single-quote --trailing-comma es5 --write \"{src,__{tests,mocks}__}/**/*.js\""
+    "format": "prettier  --write \"{src,__{tests,mocks}__}/**/*.js\""
   },
   "browserslist": {
     "production": [
@@ -22,6 +27,32 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "extension": [
+      ".js"
+    ],
+    "exclude": [
+      "test/**",
+      "test{,-*}.js",
+      "**/*{.,-}test.js",
+      "**/__tests__/**",
+      "node_modules/**/*.js",
+      "public/**/*.js",
+      "build/**/*.js",
+      "coverage/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "lcov"
     ]
   }
 }
