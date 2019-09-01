@@ -1,4 +1,4 @@
-import { CAL_WIDTH } from '../lib/constant'
+import { CAL_WIDTH } from '../../lib/constant'
 
 class CalendarEvent {
   constructor(_event) {

@@ -1,6 +1,6 @@
 import CalendarEvent from './event'
-import IntervalTree from '../lib/interval/tree'
-import { CAL_WIDTH } from '../lib/constant'
+import IntervalTree from '../../lib/interval/tree'
+import { CAL_WIDTH } from '../../lib/constant'
 
 class CalendarEvents {
   constructor(_events) {
@@ -50,24 +50,24 @@ class CalendarEvents {
           left += incLeft
         })
     }
-    console.log(
-      '[' +
-        _event.start +
-        ', ' +
-        _event.end +
-        '] duration = ' +
-        _event.duration +
-        ' width=' +
-        _event.width +
-        ' conflict=' +
-        _event.conflicts.length +
-        ' left=' +
-        _event.left
-    )
+    // console.log(
+    //   '[' +
+    //     _event.start +
+    //     ', ' +
+    //     _event.end +
+    //     '] duration = ' +
+    //     _event.duration +
+    //     ' width=' +
+    //     _event.width +
+    //     ' conflict=' +
+    //     _event.conflicts.length +
+    //     ' left=' +
+    //     _event.left
+    // )
   }
 
   calcUIPosition() {
-    this.tree.inorder(this.findConflicts.bind(this))
+    this.iterate(this.findConflicts.bind(this))
   }
   iterate(callback) {
     this.tree.inorder(callback)

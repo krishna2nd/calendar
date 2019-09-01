@@ -1,8 +1,8 @@
-import CalendarEvents from './events'
+import CalendarEvents from './events/events'
 import { Ruler } from './ruler'
 import './calendar.style.css'
-import calSvg from "./calendar.svg";
-import eventSvg from "./event.svg";
+import calSvg from './calendar.svg'
+import eventSvg from './events/event.svg'
 
 class Calendar {
   constructor(_events) {
@@ -38,7 +38,7 @@ class Calendar {
       const html = `<div
       class='event'
       style='width:${width}px;
-      height: ${height*2}px;
+      height: ${height * 2}px;
       margin-top: ${top}px;
       margin-left: ${left}px;'>
       <img src="${eventSvg}" />
@@ -50,30 +50,10 @@ class Calendar {
   }
 
   render(element) {
-    var month = function(date) {
-      const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ]
-      return months[date.getMonth()]
-    }
     if (element) {
       this.element = element
     }
-
-    const today = new Date()
-
-    const Header = new Date().toDateString();
+    const Header = new Date().toDateString()
     this.element.innerHTML = `
       <div class="header"><img src="${calSvg}" /> ${Header}</div>
       <div class="calendar">

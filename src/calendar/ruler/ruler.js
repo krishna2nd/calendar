@@ -105,7 +105,7 @@ const htmlHour = label => {
 
 class Ruler {
   constructor(hourLabel) {
-      this.hours = hourLabel;
+    this.hours = hourLabel
   }
   render() {
     return `
@@ -119,4 +119,4 @@ class Ruler {
   }
 }
 
-export default Ruler;
+export default Ruler

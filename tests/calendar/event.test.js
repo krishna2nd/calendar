@@ -1,4 +1,4 @@
-import CalendarEvent from '../../src/calendar/event'
+import CalendarEvent from '../../src/calendar/events/event'
 import { CAL_WIDTH } from '../../src/lib/constant';
 import assert from 'assert'
 import { isNumber } from 'util';

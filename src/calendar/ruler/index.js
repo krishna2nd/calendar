@@ -1,5 +1,3 @@
 import Ruler from './ruler'
 
-export {
-    Ruler
-};
+export { Ruler }
