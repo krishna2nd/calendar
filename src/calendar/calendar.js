@@ -71,7 +71,7 @@ class Calendar {
       <div class="header"><img src="${calSvg}" /> ${Header}</div>
       <div class="calendar">
         ${this.renderRuler()}
-        <div class="events" onclick="show()">
+        <div class="events" onclick="show(this)">
          ${this.renderEvents()}
         </div>
       </div>

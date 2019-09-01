@@ -3,11 +3,16 @@
 import './add.css';
 import CalendarEvent from '../../events/event';
 
-window.show = function() {
+window.show = function(_ele) {
+  let offsetY = event.offsetY;
+  if (event.target && event.target.className !== 'events') {
+    offsetY = event.target.offsetTop + event.offsetY;
+  }
+
   var ele = document.getElementById('add-event');
   ele.style.display = 'block';
   ele.style.top = (window.scrollY || 0) + 100 + 'px';
-  var _event = new CalendarEvent({ start: Math.floor(event.offsetY / 2) });
+  var _event = new CalendarEvent({ start: Math.floor(offsetY / 2) });
   document.getElementById('title').value = _event.id;
   document.getElementById('start').value = _event.start;
   document.getElementById('end').value = _event.end;
@@ -36,8 +41,8 @@ export default class AddEventModal {
     event.preventDefault();
   }
 
-  show() {
-    window.show && window.show();
+  show(ele) {
+    window.show && window.show(ele);
   }
 
   render(event = new CalendarEvent()) {

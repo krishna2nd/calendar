@@ -7,6 +7,7 @@ class IntervalTree {
       let _event = _events[index];
       this.root = this.insert(_event);
     }
+    // console.log(JSON.stringify(this.root))
   }
   insert(inEvent) {
     const _insert = function(root, _event) {
@@ -28,6 +29,7 @@ class IntervalTree {
   }
 
   findConflicts(_event) {
+    // console.log("Conflict" , _event)
     _event.conflicts = [];
     const checkConflict = function(e1, e2) {
       if (e1.id === e2.id) return false;
