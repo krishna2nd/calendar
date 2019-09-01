@@ -69,6 +69,9 @@ class CalendarEvents {
   calcUIPosition() {
     this.tree.inorder(this.findConflicts.bind(this))
   }
+  iterate(callback) {
+    this.tree.inorder(callback)
+  }
 }
 
 export default CalendarEvents

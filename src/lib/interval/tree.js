@@ -31,16 +31,16 @@ class IntervalTree {
     _event.conflicts = []
     const checkConflict = function(e1, e2) {
       if (e1.id === e2.id) return false
-      //   console.log(
-      //     e1.id,
-      //     e2.id,
-      //     e1.start,
-      //     e1.end,
-      //     e2.start,
-      //     e2.end,
-      //     e1.start <= e2.end,
-      //     e2.start <= e1.end
-      //   )
+        console.log(
+          e1.id,
+          e2.id,
+          e1.start,
+          e1.end,
+          e2.start,
+          e2.end,
+          e1.start <= e2.end,
+          e2.start <= e1.end
+        )
       return e1.start <= e2.end && e2.start <= e1.end
     }
     var searchEventConflicts = function(root, _event) {

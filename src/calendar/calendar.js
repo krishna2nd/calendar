@@ -1,3 +1,7 @@
+import CalendarEvents from './events'
+import { Ruler } from './ruler'
+import './calendar.style.css'
+
 class Calendar {
   constructor(_events) {
     this.events = new CalendarEvents(_events || [])
@@ -5,15 +9,78 @@ class Calendar {
 
   add(_event) {
     this.events.add(_event)
-    this.renderEvents()
+    this.render()
   }
 
-  renderRuler() {}
-  renderEvents() {}
+  renderRuler() {
+    const ruler = new Ruler([
+      '10:00 am',
+      '11:00 am',
+      '12:00 pm',
+      '01:00 pm',
+      '02:00 pm',
+      '03:00 pm',
+      '04:00 pm',
+      '05:00 pm',
+      '06:00 pm',
+      '07:00 pm',
+      '08:00 pm',
+      '09:00 pm',
+    ])
+    return ruler.render()
+  }
+  renderEvents() {
+    let eventHtml = []
+    this.events.iterate(_event => {
+      const { width, duration: height, top, left } = _event
+      const html = `<div
+      class='event'
+      style='width:${width}px;
+      height: ${height*2}px;
+      margin-top: ${top}px;
+      margin-left: ${left}px;'>
+      Meeting - ${_event.id}
+      </div>`
+      eventHtml.push(html)
+    })
+    return eventHtml.join('')
+  }
 
-  render() {
-    this.renderRuler()
-    this.renderEvents()
+  render(element) {
+    var month = function(date) {
+      const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ]
+      return months[date.getMonth()]
+    }
+    if (element) {
+      this.element = element
+    }
+
+    const today = new Date()
+
+    const Header = new Date().toDateString();
+    this.element.innerHTML = `
+      <div class="header">${Header}</div>
+      <div class="calendar">
+        ${this.renderRuler()}
+        <div class="events">
+         ${this.renderEvents()}
+        </div>
+      </div>
+      <div class="footer">${Header}</div>
+    `
   }
 }
 

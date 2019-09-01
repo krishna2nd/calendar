@@ -1,0 +1,59 @@
+#calendar-panel {
+  display: inline-flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.calendar {
+  display: flex;
+  flex-direction: row;
+}
+.calendar .events {
+  width: 600px;
+  height: 1440px;
+}
+
+.header {
+  border-bottom: solid 1px #efefef;
+}
+.footer {
+  border-top: solid 1px #efefef;
+}
+
+.header,
+.footer {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #898989;
+}
+
+.calendar .events .event {
+  background-color: #0463ac;
+  opacity: 0.8;
+  border: solid 1px #336699;
+  position: absolute;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+.calendar .events .event:hover {
+  z-index: 10000;
+  animation: focusEvent 0.4s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+@keyframes focusEvent {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.005);
+  }
+}
