@@ -1,6 +1,8 @@
 import CalendarEvents from './events'
 import { Ruler } from './ruler'
 import './calendar.style.css'
+import calSvg from "./calendar.svg";
+import eventSvg from "./event.svg";
 
 class Calendar {
   constructor(_events) {
@@ -39,6 +41,7 @@ class Calendar {
       height: ${height*2}px;
       margin-top: ${top}px;
       margin-left: ${left}px;'>
+      <img src="${eventSvg}" />
       Meeting - ${_event.id}
       </div>`
       eventHtml.push(html)
@@ -72,7 +75,7 @@ class Calendar {
 
     const Header = new Date().toDateString();
     this.element.innerHTML = `
-      <div class="header">${Header}</div>
+      <div class="header"><img src="${calSvg}" /> ${Header}</div>
       <div class="calendar">
         ${this.renderRuler()}
         <div class="events">

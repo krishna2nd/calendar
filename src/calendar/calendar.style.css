@@ -15,6 +15,13 @@
 
 .header {
   border-bottom: solid 1px #efefef;
+  height: 40px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
+.header img {
+  margin-right: 4px;
 }
 .footer {
   border-top: solid 1px #efefef;
@@ -26,7 +33,8 @@
   line-height: 40px;
   padding-left: 10px;
   font-size: 20px;
-  color: #898989;
+  color: #fff;
+  background-color: #336699;
 }
 
 .calendar .events .event {
@@ -41,7 +49,13 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  color: #FFF;
+  color: #fff;
+}
+
+.calendar .events .event img {
+  width:18px;
+  height: 18px;
+  margin-right: 4px;
 }
 
 .calendar .events .event:hover {
