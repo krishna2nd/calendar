@@ -61,7 +61,7 @@ class IntervalTree {
         root.left.maxEnd >= _event.start &&
         (root.right && root.right.maxEnd >= _event.start)
       ) {
-        searchEventConflicts(root.left, _event)
+        searchEventConflicts(root.left, _event);
         searchEventConflicts(root.right, _event);
         return;
       }

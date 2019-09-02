@@ -11,8 +11,8 @@ $(function() {
     { id: 'New 4', start: 180, end: 330 },
     { id: 'New 5', start: 180, end: 330 },
     { id: 'New 6', start: 180, end: 330 },
-    { id: "New 7", start: 314, end: 344 },
-    { id: "New 8", start: 342, end: 372 }
+    { id: 'New 7', start: 314, end: 344 },
+    { id: 'New 8', start: 342, end: 372 },
   ]);
   calendar.render(container);
   window.calendar = calendar;

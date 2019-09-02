@@ -17,7 +17,18 @@ describe('CalendarEvents', () => {
   ];
   let newNode = () => ({ id: 'New I', start: 100, end: 360 });
   let nodeOrder = ['New 0', 'New 1', 'New 4', 'New 5', 'New 6', 'New 7', 'New 8', 'New 3', 'New 2'];
-  let nodeOrderAfterAdd = ['New 0', 'New I', 'New 1', 'New 4', 'New 5', 'New 6', 'New 7', 'New 8', 'New 3', 'New 2'];
+  let nodeOrderAfterAdd = [
+    'New 0',
+    'New I',
+    'New 1',
+    'New 4',
+    'New 5',
+    'New 6',
+    'New 7',
+    'New 8',
+    'New 3',
+    'New 2',
+  ];
 
   it('Create', () => {
     let events = new CalendarEvents(data());
@@ -33,13 +44,33 @@ describe('CalendarEvents', () => {
   it('findConflicts', () => {
     let events = new CalendarEvents(data());
     let event = newNode();
-    const expected = ['New 0', 'New 1', 'New 2', 'New 3', 'New 4', 'New 5', 'New 6', 'New 7', 'New 8'];
+    const expected = [
+      'New 0',
+      'New 1',
+      'New 2',
+      'New 3',
+      'New 4',
+      'New 5',
+      'New 6',
+      'New 7',
+      'New 8',
+    ];
     events.findConflicts(event);
     event.conflicts.forEach((e, index) => assert.ok(e.id === expected[index]));
   });
   it('calcUIPosition', () => {
     let _data = data();
-    let position = [[0,120], [450,300], [375,360], [75,360], [150,360], [225,360], [300,360], [0,400], [525,480]];
+    let position = [
+      [0, 120],
+      [450, 300],
+      [375, 360],
+      [75, 360],
+      [150, 360],
+      [225, 360],
+      [300, 360],
+      [0, 400],
+      [525, 480],
+    ];
     let index = 0;
     let events = new CalendarEvents(_data);
     events.calcUIPosition();

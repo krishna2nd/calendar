@@ -28,7 +28,7 @@ class CalendarEvents {
   findConflicts(_event) {
     _event.conflicts = [];
     var sortEvents = function(event1, event2) {
-      let duration =  (event2.end - event2.start) - (event1.end - event1.start);
+      let duration = event2.end - event2.start - (event1.end - event1.start);
       if (duration === 0) {
         if (event1.start !== event2.start) {
           return event1.start - event2.start;
