@@ -11,6 +11,8 @@
 .calendar .events {
   width: 600px;
   height: 1440px;
+  overflow: hidden;
+  position: relative;
 }
 
 .header {
