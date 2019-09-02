@@ -9,19 +9,11 @@ $(function() {
     { id: 'New 2', start: 240, end: 300 },
     { id: 'New 3', start: 200, end: 360 },
     { id: 'New 4', start: 180, end: 330 },
-    // { id: 'New 5', start: 180, end: 330 },
-    // { id: 'New 6', start: 180, end: 330 },
-    // { id: "New 7", start: 314, end: 344 },
-    // { id: "New 8", start: 342, end: 372 }
+    { id: 'New 5', start: 180, end: 330 },
+    { id: 'New 6', start: 180, end: 330 },
+    { id: "New 7", start: 314, end: 344 },
+    { id: "New 8", start: 342, end: 372 }
   ]);
   calendar.render(container);
   window.calendar = calendar;
 });
-
-//                      [60, 120](360)\
-//                               [150, 270](360)\
-//                                    [240, 300](360)
-//                              [200, 360](360)/
-//                        [180, 330](330)\
-//                                      [180,330](330)\
-//                                              [180,330](330)

@@ -20,24 +20,29 @@ class CalendarEvents {
     if (!(_event instanceof CalendarEvent)) {
       __event = new CalendarEvent(_event);
     }
+    // console.log(__event);
     this.tree.insert(__event);
     this.calcUIPosition();
-    // this.findConflicts(__event);
   }
 
   findConflicts(_event) {
     _event.conflicts = [];
     var sortEvents = function(event1, event2) {
-      if (event1.start !== event2.start) {
-        return event1.start - event2.start;
+      let duration =  (event2.end - event2.start) - (event1.end - event1.start);
+      if (duration === 0) {
+        if (event1.start !== event2.start) {
+          return event1.start - event2.start;
+        }
+        return event2.end - event1.end;
       }
-      return event2.end - event1.end;
+      return duration;
     };
 
     this.tree.findConflicts(_event);
     var conflicts = _event.conflicts;
     if (conflicts && conflicts.length) {
       _event.conflicts = conflicts;
+      var prevLeft = _event.left;
       _event.width = CAL_WIDTH / (conflicts.length + 1);
       var left = 0;
       var incLeft = _event.width;

@@ -7,7 +7,7 @@ class IntervalTree {
       let _event = _events[index];
       this.root = this.insert(_event);
     }
-    // console.log(JSON.stringify(this.root))
+    // console.log(JSON.stringify(this.root));
   }
   insert(inEvent) {
     const _insert = function(root, _event) {
@@ -16,15 +16,19 @@ class IntervalTree {
       let start = root.event.start;
 
       if (_event.start < start) {
+        // console.error('Moving left', _event.start, _event.end, ' Root- ', start);
         root.left = _insert(root.left, _event);
       } else {
+        // console.error('Moving right', _event.start, _event.end, ' Root- ', start);
         root.right = _insert(root.right, _event);
       }
 
       if (root.maxEnd < _event.end) root.maxEnd = _event.end;
+      // console.log('maxEnd', root.maxEnd);
 
       return root;
     };
+    // console.error('\nInserting', inEvent.start, inEvent.end);
     return _insert(this.root, inEvent);
   }
 
@@ -52,6 +56,16 @@ class IntervalTree {
         _event.conflicts.push(root.event);
       }
 
+      if (
+        root.left &&
+        root.left.maxEnd >= _event.start &&
+        (root.right && root.right.maxEnd >= _event.start)
+      ) {
+        searchEventConflicts(root.left, _event)
+        searchEventConflicts(root.right, _event);
+        return;
+      }
+
       if (root.left && root.left.maxEnd >= _event.start) {
         return searchEventConflicts(root.left, _event);
       }
@@ -66,6 +80,7 @@ class IntervalTree {
       if (!root) return;
 
       _inorder(root.left);
+      root.event.maxEnd = root.maxEnd;
       callback && callback(root.event);
       _inorder(root.right);
     };
